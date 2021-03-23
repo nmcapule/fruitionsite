@@ -185,7 +185,7 @@ ${slugs
     element(element) {
       if (GOOGLE_FONT !== '') {
         element.append(\`<link href="https://fonts.googleapis.com/css?family=\${GOOGLE_FONT.replace(' ', '+')}:Regular,Bold,Italic&display=swap" rel="stylesheet">
-        <style>* { font-family: "\${GOOGLE_FONT}" !important; }</style>\`, {
+        <style>:not(.notion-code-block *) { font-family: "\${GOOGLE_FONT}" !important; }</style>\`, {
           html: true
         });
       }
