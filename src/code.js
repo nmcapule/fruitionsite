@@ -259,7 +259,20 @@ ${slugs
         nav.appendChild(el);
         onLight();
       }
+      function simplifyAnchorLinks() {
+        Array.from(document.getElementsByTagName("a"))
+          .filter((a) => !a.getAttribute("bypass"))
+          .forEach((a) => {
+            a.setAttribute("bypass", "true");
+            a.addEventListener("click", (event) => {
+              event.stopImmediatePropagation();
+              window.location.href = a.href;
+            });
+          });
+      }
       const observer = new MutationObserver(function() {
+        simplifyAnchorLinks();
+
         if (redirected) return;
         const nav = document.querySelector('.notion-topbar');
         const mobileNav = document.querySelector('.notion-topbar-mobile');
