@@ -262,6 +262,7 @@ ${slugs
       function simplifyAnchorLinks() {
         Array.from(document.getElementsByTagName("a"))
           .filter((a) => !a.getAttribute("bypass"))
+          .filter((a) => a.getAttribute("target") !== "_blank")
           .forEach((a) => {
             a.setAttribute("bypass", "true");
             a.addEventListener("click", (event) => {
